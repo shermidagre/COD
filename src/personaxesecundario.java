@@ -11,7 +11,6 @@ public personaxesecundario() {
 
     this.nome = "Mutenroy";
     this.vidas = 1000;
-
 }
 }
 
