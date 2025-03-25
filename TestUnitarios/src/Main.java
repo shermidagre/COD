@@ -180,5 +180,6 @@ public class Main {
     }
 
     public static void simularEntrada(int input) {
+        
     }
 }
