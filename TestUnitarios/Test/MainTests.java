@@ -11,6 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 
+
 class MainTests {
 
 
@@ -26,7 +27,9 @@ class MainTests {
 
         float expectedCambio = 0.50f; // 1.00 - 0.50
 
-        assertEquals(expectedCambio, Main.calcularCambio(dinero, producto), "El cambio debe ser 0.50 euros");
+        assertEquals(expectedCambio, Main.calcularCambio(dinero, producto),
+
+                () -> "El cambio debe ser " + expectedCambio + " euros para café.");
 
     }
 
@@ -43,7 +46,9 @@ class MainTests {
 
         float expectedCambio = 0.40f; // 1.00 - 0.60
 
-        assertEquals(expectedCambio, Main.calcularCambio(dinero, producto), "El cambio debe ser 0.40 euros");
+        assertEquals(expectedCambio, Main.calcularCambio(dinero, producto),
+
+                () -> "El cambio debe ser " + expectedCambio + " euros para chocolate.");
 
     }
 
@@ -60,7 +65,9 @@ class MainTests {
 
         float expectedCambio = 0.20f; // 0.50 - 0.30
 
-        assertEquals(expectedCambio, Main.calcularCambio(dinero, producto), "El cambio debe ser 0.20 euros");
+        assertEquals(expectedCambio, Main.calcularCambio(dinero, producto),
+
+                () -> "El cambio debe ser " + expectedCambio + " euros para té.");
 
     }
 
@@ -81,11 +88,11 @@ class MainTests {
 
         Main.azucar = 0; // Reiniciar el nivel de azúcar antes de la prueba
 
-        // Simular la entrada del usuario
+        Main.simularEntrada(input); // Simular la entrada del usuario
 
-        Main.simularEntrada(input);
+        assertEquals(expectedAzucar, Main.procesoAzucar(),
 
-        assertEquals(expectedAzucar, Main.procesoAzucar(), "El nivel de azúcar debe ser " + expectedAzucar);
+                () -> "El nivel de azúcar debe ser " + expectedAzucar + " después de la entrada " + input + ".");
 
     }
 

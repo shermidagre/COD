@@ -9,7 +9,7 @@ public class Main {
 
     private static final float PRECIO_TE = 0.30f;
 
-    private static int azucar = 0; // Azúcar inicial
+    public static int azucar = 0; // Azúcar inicial
 
 
     public static void main(String[] args) {
@@ -179,4 +179,6 @@ public class Main {
 
     }
 
+    public static void simularEntrada(int input) {
+    }
 }
