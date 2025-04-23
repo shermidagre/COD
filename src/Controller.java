@@ -12,7 +12,9 @@ public class Controller {
         miModel.crearCoche("Aston Martin", "FGH 3333");
 
         Coche ferrari = miModel.getCoche("SBC 1234");
+
         // modifica la velocidad
+
         int nuevaVelocidad = miModel.cambiarVelocidad("SBC 1234", 30);
 
         // recoje la velocidad y la muestra (tarea de la View)
@@ -24,4 +26,25 @@ public class Controller {
             System.out.println("Error");
         } ;
     }
+
+    if(seleccion = 0){
+            
+    // modifica velocidad en caso de que se baje
+
+    int velocidadreducida = miModel.disminuirVelocidad("SBC 1234", 30)
+
+    }else (seleccion = 1){
+            
+    // modifica velocidad en caso de que se suba
+
+    int velocidadreducida = miModel.aumentarVelocidad("SBC 1234", 30)
+
+    }
+    
+
+
+    
+
+
+
 }
