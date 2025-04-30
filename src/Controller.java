@@ -1,50 +1,42 @@
 import java.lang.module.ModuleDescriptor;
-
+import java.util.Scanner;
 public class Controller {
     public static void main(String[] args) {
         // Instanciamos la vista y el modelo
         View miView = new View();
-        Model miModel = new Model();
 
         // Crear tres coches
-        miModel.crearCoche("LaFerrari", "SBC 1234");
-        miModel.crearCoche("Alpine", "HYU 4567");
-        miModel.crearCoche("Aston Martin", "FGH 3333");
+        Model.crearCoche("LaFerrari", "SBC 1234");
+        Model.crearCoche("Alpine", "HYU 4567");
+        Model.crearCoche("Aston Martin", "FGH 3333");
 
-        Coche ferrari = miModel.getCoche("SBC 1234");
+        // Selecciona un coche
+        String matricula = "SBC 1234";
 
-        // modifica la velocidad
+        Scanner sc = new Scanner(System.in);
+        int seleccion = sc.nextInt();
 
-        int nuevaVelocidad = miModel.cambiarVelocidad("SBC 1234", 30);
+        if (seleccion == 0) {
 
-        // recoje la velocidad y la muestra (tarea de la View)
-        boolean hecho = miView.muestraVelocidad("SBC 1234", miModel.getVelocidad("SBC 1234"));
+            Model.disminuirVelocidad(matricula, 30);
 
-        if (hecho) {
-            System.out.println("Correcto");
+        } else if (seleccion == 1) {
+
+            Model.aumentarVelocidad(matricula, 30);
+
         } else {
-            System.out.println("Error");
-        } ;
-    }
+            System.out.println("Opción no válida");
+        }
 
-    if(seleccion = 0){
-            
-    // modifica velocidad en caso de que se baje
-
-    int velocidadreducida = miModel.disminuirVelocidad("SBC 1234", 30)
-
-    }else (seleccion = 1){
-            
-    // modifica velocidad en caso de que se suba
-
-    int velocidadreducida = miModel.aumentarVelocidad("SBC 1234", 30)
-
+        // Mostrar resultado
+        boolean hecho = miView.muestraVelocidad(matricula, Model.getVelocidad(matricula));
+        if (hecho) {
+            System.out.println("Operación exitosa.");
+        } else {
+            System.out.println("Error al mostrar la velocidad.");
+        }
     }
     
-
-
-    
-
 
 
 }

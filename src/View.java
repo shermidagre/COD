@@ -16,8 +16,11 @@ public class View {
     }
 
     Scanner sc = new Scanner(System.in);
-
-    System.out.println();
-
+    public int menu() {
+        System.out.println("Seleccione una opción:");
+        System.out.println("0 - Reducir velocidad");
+        System.out.println("1 - Aumentar velocidad");
+        return sc.nextInt();
+    }
 
 }
