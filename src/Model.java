@@ -43,35 +43,36 @@ public class Model {
      */
     /**
      * Cambia la velocidad de un coche
+     *
      * @param matricula
-     * @param v nueva velocidad
+     * @param v         nueva velocidad
      * @return velocidad modificada
      */
-    public static int cambiarVelocidad(String matricula, Integer v) {
+    public boolean cambiarVelocidad(String matricula, Integer v) {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad = v;
-            return c.velocidad;
+            return true;
         }
-        return -1; // Error: coche no encontrado
+        return false; // Error: coche no encontrado
     }
 
-    public static void aumentarVelocidad(String matricula, Integer v) {
+    public static boolean aumentarVelocidad(String matricula, Integer v) {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad += v;
-            return c.velocidad;
+            return true;
         }
-        return aumentarVelocidad("a",5);
+        return false;
     }
 
-    public static void disminuirVelocidad(String matricula, Integer v) {
+    public static boolean disminuirVelocidad(String matricula, Integer v) {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad -= v;
-            return c.velocidad;
+            return true;
         }
-        return disminuirVelocidad("v",1);
+        return false;
     }
 
     public static Object getVelocidad(String matricula) {

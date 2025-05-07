@@ -17,30 +17,27 @@ public class View {
 
 
     public static void  menu() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Seleccione una opción:");
-        System.out.println("0 - Reducir velocidad");
-        System.out.println("1 - Aumentar velocidad");
-        System.out.println("2 - Crear coche");
-        int opcion = sc.nextInt();
 
-        if(opcion == 0){
+        int opcion;
+        do {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Seleccione una opción:");
+            System.out.println("0 - Reducir velocidad");
+            System.out.println("1 - Aumentar velocidad");
+            System.out.println("2 - Cambiar velocidad");
+            System.out.println("3 - Crear coche");
 
-            Controller.disminuirVelocidad();
+             opcion = sc.nextInt();
 
-        } else if (opcion ==1) {
-
-            Controller.aumentarVelocidad();
-
-        }
-        else if (opcion == 2){
-
-            Controller.crearCoche();
-
-        }
-        else {
-            System.out.println("Seleciona una opcion valida");
-        }
+            switch (opcion) {
+                case 0 -> Controller.disminuirVelocidad();
+                case 1 -> Controller.aumentarVelocidad();
+                case 2 -> Controller.cambiarVelocidad();
+                case 3 -> Controller.crearCoche();
+                case 5 -> System.out.println("Saliendo...");
+                default -> System.out.println("Opción inválida.");
+            }
+        } while (opcion != 5);
     }
 
     public static String Matricula (){
@@ -55,6 +52,13 @@ public class View {
         System.out.println("Introduce el modelo");
         String modelo = sc.next();
         return modelo;
+    }
+
+    public static int Velocidad (){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce la velocidad");
+        int velocidad = sc.nextInt();
+        return velocidad;
     }
 
 

@@ -4,11 +4,11 @@ import java.lang.module.ModuleDescriptor;
 import java.util.Scanner;
 public class Controller {
 
-    public static void crearCoche(){
+    public static String crearCoche(){
 
-        Coche C = Model.crearCoche("ej","ej");
-        Coche C2 = Model.getCoche(C.matricula);
-        System.out.println(C2.matricula);
+        String modelo = View.Modelo();
+        String matricula = View.Matricula();
+        return
 
     }
 
@@ -21,6 +21,12 @@ public class Controller {
     public static void disminuirVelocidad(){
 
         Coche C = Model.disminuirVelocidad("ej1",1);
+
+    }
+
+    public static void cambiarVelocidad(){
+
+        Coche C = Model.cambiarVelocidad("ej",30);
 
     }
 
