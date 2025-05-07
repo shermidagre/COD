@@ -14,9 +14,6 @@ public class Model {
      */
 
     public static Coche crearCoche(String modelo, String matricula) {
-        if (getCoche(matricula) != null) {
-            throw new IllegalArgumentException("Ya existe un coche con matrícula: " + matricula);
-        }
         Coche aux = new Coche(modelo, matricula);
         parking.add(aux);
         return aux;
@@ -29,12 +26,13 @@ public class Model {
      */
 
     public static Coche getCoche(String matricula) {
+        Coche aux = null;
         for (Coche e : parking) {
             if (e.matricula.equals(matricula)) {
-                return e;
+                aux = e;
             }
         }
-        return null;
+        return aux;
     }
 
     /**
@@ -58,26 +56,25 @@ public class Model {
         return -1; // Error: coche no encontrado
     }
 
-    public static int aumentarVelocidad(String matricula, Integer v) {
+    public static void aumentarVelocidad(String matricula, Integer v) {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad += v;
             return c.velocidad;
         }
-        return -1;
+        return aumentarVelocidad("a",5);
     }
 
-    public static int disminuirVelocidad(String matricula, Integer v) {
+    public static void disminuirVelocidad(String matricula, Integer v) {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad -= v;
             return c.velocidad;
         }
-        return -1;
+        return disminuirVelocidad("v",1);
     }
 
-    public static int getVelocidad(String matricula) {
-        Coche c = getCoche(matricula);
-        return (c != null) ? c.velocidad : -1;
+    public static Object getVelocidad(String matricula) {
+        return getCoche(matricula).velocidad;
     }
 }
