@@ -1,34 +1,72 @@
-import org.junit.jupiter.params.provider.EnumSource;
+import java.util.ArrayList;
 
-import java.lang.module.ModuleDescriptor;
-import java.util.Scanner;
 public class Controller {
+
+
 
     public static String crearCoche(){
 
-        String modelo = View.Modelo();
+            String modelo = View.Modelo();
+            String matricula = View.Matricula();
+            Coche nuevo = Model.crearCoche(modelo, matricula);
+            return nuevo.matricula;
+    }
+
+    public static void aumentarVelocidad() {
         String matricula = View.Matricula();
-        return
+        int cantidad = View.Velocidad();
+        boolean comprobacion = Model.aumentarVelocidad(matricula, cantidad);
+        if (comprobacion) {
+            Integer v = Model.getVelocidad(matricula);
+            View.mostrarVelocidad(matricula, v);
+        } else {
+            View.mostrarError("Coche no encontrado.");
+        }
+    }
+
+    public static void disminuirVelocidad() {
+        String matricula = View.Matricula();
+        int cantidad = View.Velocidad();
+        boolean comprobacion = Model.disminuirVelocidad(matricula, cantidad);
+        if (comprobacion) {
+            Integer v = Model.getVelocidad(matricula);
+            View.mostrarVelocidad(matricula, v);
+        } else {
+            View.mostrarError("Coche no encontrado.");
+        }
+    }
+
+        public static void cambiarVelocidad() {
+                String matricula = View.Matricula();
+                int nuevaVelocidad = View.Velocidad();
+                boolean comprobacion = Model.cambiarVelocidad(matricula, nuevaVelocidad);
+                if (comprobacion) {
+                    Integer v = Model.getVelocidad(matricula);
+                    View.mostrarVelocidad(matricula, v);
+                } else {
+                    View.mostrarError("Coche no encontrado.");
+                }
+            }
+
+    public static void mostrarCoches() {
+        View.mostrarListaCoches(Model.parking);
 
     }
 
-    public static void aumentarVelocidad(){
+    public  static void mostrarCocheIndividual(){
 
-        Coche C = Model.aumentarVelocidad("ej",3);
-
-    }
-
-    public static void disminuirVelocidad(){
-
-        Coche C = Model.disminuirVelocidad("ej1",1);
-
-    }
-
-    public static void cambiarVelocidad(){
-
-        Coche C = Model.cambiarVelocidad("ej",30);
+        String matricula = View.Matricula();
+        Coche c = Model.getCochePorMatricula(matricula);
+        if (c != null){
+            View.mostrarCocheIndividual(c);
+        }
+        else {
+            View.mostrarError("Coche no encontrado.");
+        }
 
     }
-
-
 }
+
+
+
+

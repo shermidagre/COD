@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Clase encargada de manejar los datos
  */
 public class Model {
-    static ArrayList<Coche> parking = new ArrayList<>();
+    public static ArrayList<Coche> parking = new ArrayList<>();
 
     /**
      * Crea un coche y lo mete en el parking
@@ -26,56 +26,54 @@ public class Model {
      */
 
     public static Coche getCoche(String matricula) {
-        Coche aux = null;
-        for (Coche e : parking) {
-            if (e.matricula.equals(matricula)) {
-                aux = e;
+        for (Coche c : parking) {
+            if (c.matricula.equals(matricula)) {
+                return c;
             }
         }
-        return aux;
+        return null;
     }
+
 
     /**
      * Cambia la velocidad de un coche
-     * @param matricula
-     * @param v nueva velocidad
      * @return velocidad modificada
      */
     /**
      * Cambia la velocidad de un coche
-     *
-     * @param matricula
-     * @param v         nueva velocidad
-     * @return velocidad modificada
-     */
-    public boolean cambiarVelocidad(String matricula, Integer v) {
-        Coche c = getCoche(matricula);
-        if (c != null) {
-            c.velocidad = v;
-            return true;
-        }
-        return false; // Error: coche no encontrado
-    }
 
-    public static boolean aumentarVelocidad(String matricula, Integer v) {
+     * @param matricula
+
+     */
+    public static boolean cambiarVelocidad(String matricula, int nuevaVelocidad) {
         Coche c = getCoche(matricula);
         if (c != null) {
-            c.velocidad += v;
+            c.velocidad = nuevaVelocidad;
             return true;
         }
         return false;
     }
 
-    public static boolean disminuirVelocidad(String matricula, Integer v) {
+    public static boolean aumentarVelocidad(String matricula, int cantidad) {
         Coche c = getCoche(matricula);
         if (c != null) {
-            c.velocidad -= v;
+            c.velocidad += cantidad;
             return true;
         }
         return false;
     }
 
-    public static Object getVelocidad(String matricula) {
-        return getCoche(matricula).velocidad;
+    public static boolean disminuirVelocidad(String matricula, int cantidad) {
+        return aumentarVelocidad(matricula, -cantidad); // Reusamos lógica
     }
+
+    public static Integer getVelocidad(String matricula) {
+        Coche c = getCoche(matricula);
+        return c != null ? c.velocidad : null;
+    }
+
+    public static Coche getCochePorMatricula(String matricula) {
+        return getCoche(matricula);
+    }
+
 }
