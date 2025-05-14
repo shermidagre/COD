@@ -30,7 +30,7 @@ public class View {
                 case 1 -> Controller.aumentarVelocidad();
                 case 2 -> Controller.cambiarVelocidad();
                 case 3 -> Controller.crearCoche();
-                case 4 -> Controller.mostrarCoches();
+                case 4 -> Controller.mostrarCoches(); // mostramos el metodo de la view , meto un get para el get parking y lo meto en la funcion de mostrarListaCoches
                 case 5 -> Controller.mostrarCocheIndividual();
                 case 6 -> {
                     mostrarMensaje("Saliendo...");
@@ -82,9 +82,7 @@ public class View {
             mostrarMensaje("No hay coches en el parking.");
         } else {
             for (Coche c : lista) {
-                mostrarMensaje("Matrícula: " + c.matricula +
-                        ", Modelo: " + c.modelo +
-                        ", Velocidad: " + c.velocidad + " km/h");
+            mostrarCocheIndividual(c);
             }
         }
     }
