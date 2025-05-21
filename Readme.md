@@ -39,7 +39,6 @@ sequenceDiagram
 participant View
 participant Controller
 participant Model
-participant Coche
 
     View->>Controller: selecciona opción 3
     Controller->>View: Modelo()
