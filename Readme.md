@@ -52,6 +52,36 @@ sequenceDiagram
     deactivate View
 ```
 
+```mermaid
+sequenceDiagram
+participant View
+participant Controller
+participant Model
+participant Coche
+
+    View->>Controller: selecciona opción 3
+    Controller->>View: Modelo()
+    activate View
+    View-->>Controller: retorna modelo
+    deactivate View
+    
+    Controller->>View: Matricula()
+    activate View
+    View-->>Controller: retorna matricula
+    deactivate View
+    
+    Controller->>Model: crearCoche(modelo, matricula)
+    activate Model
+    Model->>Coche: new Coche(modelo, matricula)
+    Model->>Model: parking.add(coche)
+    Model-->>Controller: retorna coche
+    deactivate Model
+    
+    Controller->>View: return matricula
+    activate View
+    View->>View: muestra mensaje y vuelve al menú
+    deactivate View
+```
 El mismo diagrama con los nombres de los métodos
 
 ```mermaid
