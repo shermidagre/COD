@@ -56,8 +56,9 @@ participant Model
     Model->>Model: parking.add(coche)
     Model-->>Controller: Coche creado !!
     deactivate Model
-    
+    activate Controller
     Controller->>View: Devuelve la matricula
+    deactivate Controller
     activate View
     View->>View: muestra mensaje y vuelve al menú
     deactivate View
