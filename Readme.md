@@ -67,13 +67,13 @@ participant Model
     activate Model
     Model-->>Controller: Devuelve la lista de coches
     deactivate Model
-    Controller-->View: View.mostrarListaCoches(lista)
+    Controller-->View: mostrarListaCoches(lista)
     activate View
     alt Si la lista esta vacia
     View->>View: Manda mensaje de que no hay coches
     else 
         loop mostrarListaCoches(ArrayList<Coche> lista) 
-            View->>View: View.mostrarcocheindividual(c)
+            View->>View: mostrarcocheindividual(c)
         end
         end
     
