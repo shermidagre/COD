@@ -69,7 +69,7 @@ participant Model
     deactivate Model
     Controller-->View: mostrarListaCoches(lista)
     activate View
-    alt Si la lista esta vacia
+    alt En caso de que no haya coches en el parking
     View->>View: Manda mensaje de que no hay coches
     else 
         loop mostrarListaCoches(ArrayList<Coche> lista) 
