@@ -40,7 +40,7 @@ participant View
 participant Controller
 participant Model
 
-    View->>Controller: Selecciona opción 3
+    View->>Controller: Selecciona opcion 3
     Controller->>View: Modelo()
     activate View
     View-->>Controller: Devuelve el modelo
@@ -54,11 +54,19 @@ participant Model
     Controller->>Model: crearCoche(modelo, matricula)
     activate Model
     Model->>Model: parking.add(coche)
-    Model-->>Controller: Coche creado!!
+    Model-->>Controller: Coche creado !!
     deactivate Model
     
     Controller->>View: Devuelve la matricula
     activate View
     View->>View: muestra mensaje y vuelve al menú
     deactivate View
+    
+    View->>Controller: Selecciona opcion 4
+    Controller->>View: Modelo()
+    activate View
+    View-->>Controller: Devuelve el modelo
+    deactivate View
+    
+    
 ```
