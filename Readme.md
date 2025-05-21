@@ -63,11 +63,15 @@ participant Model
     deactivate View
     
     View->>Controller: Selecciona opcion 4
+    activate Controller
     Controller->>Model: Model.parking
+    deactivate Controller
     activate Model
     Model-->>Controller: Devuelve la lista de coches
     deactivate Model
+    activate Controller
     Controller-->View: View.mostrarListaCoches(lista)
+    deactivate Controller
     activate View
     alt Si la lista esta vacia
     View->>View: Manda mensaje de que no hay coches
