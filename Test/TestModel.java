@@ -1,127 +1,104 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestModel {
-    private Model model;
 
     @BeforeEach
     public void setUp() {
-        // Inicializar el modelo antes de cada prueba
-        model = new Model();
+        Model.parking.clear(); // Limpiar parking antes de cada test
     }
 
-    /**
-     * Test 1: Verificar que se puede crear un coche correctamente.
-     */
     @Test
-    public void testCrearCocheCorrectamente() {
-        // Crear un coche
-        Coche coche = model.crearCoche("Toyota", "ABC123");
+    public void testCrearCoche() {
+        Coche coche = Model.crearCoche("Toyota", "ABC123");
 
-        // Verificar que el coche está en el parking
-        assertTrue(model.parking.contains(coche));
+        assertNotNull(coche);
+        assertEquals("Toyota", coche.modelo);
+        assertEquals("ABC123", coche.matricula);
+        assertEquals(0, coche.velocidad); // Velocidad inicial debe ser 0
+        assertTrue(Model.parking.contains(coche));
     }
 
-    /**
-     * Test 2: Comprobar que no se pueden agregar dos coches con la misma matrícula.
-     */
     @Test
     public void testNoAgregarDosCochesConMismaMatricula() {
-        // Crear el primer coche
-        Coche coche1 = model.crearCoche("Toyota", "XYZ789");
+        Model.crearCoche("Toyota", "XYZ789");
 
-        // Intentar crear un segundo coche con la misma matrícula
-        Coche coche2 = model.crearCoche("Nissan", "XYZ789");
-
-        // Verificar que solo hay un coche en el parking
-        assertEquals(2, model.parking.size()); // Asegurarse de que ambos coches están en el parking
-        assertNotEquals(coche1, coche2); // Los objetos deben ser diferentes
-    }
-
-    /**
-     * Test 3: Buscar un coche por matrícula válida.
-     */
-    @Test
-    public void testBuscarCochePorMatriculaValida() {
-        // Crear un coche
-        model.crearCoche("LaFerrari", "SBC1234");
-
-        // Buscar el coche por matrícula
-        Coche coche = model.getCoche("SBC1234");
-
-        // Verificar que se encontró el coche
-        assertNotNull(coche); // El coche no debe ser nulo
-        assertEquals("LaFerrari", coche.modelo); // Verificar el modelo
-        assertEquals("SBC1234", coche.matricula); // Verificar la matrícula
-    }
-
-    /**
-     * Test 4: Buscar un coche por matrícula inválida.
-     */
-    @Test
-    public void testBuscarCochePorMatriculaInvalida() {
-        // Buscar un coche inexistente
-        Coche coche = model.getCoche("INVALIDA");
-
-        // Verificar que no se encontró el coche
-        assertNull(coche); // El resultado debe ser null
-    }
-
-    /**
-     * Test 5: Cambiar la velocidad de un coche existente.
-     */
-    /**
-     * Test 6: Intentar cambiar la velocidad de un coche inexistente.
-     */
-    @Test
-    public void testCambiarVelocidadCocheInexistente() {
-        // Intentar cambiar la velocidad de un coche inexistente
-        Exception exception = assertThrows(NullPointerException.class, () -> {
-            model.cambiarVelocidad("INVALIDA", 50);
+        assertThrows(IllegalArgumentException.class, () -> {
+            Model.crearCoche("Nissan", "XYZ789");
         });
 
-        // Verificar que se lanzó la excepción esperada
-        assertNotNull(exception);
+        assertEquals(1, Model.parking.size());
     }
 
-
-/**
- * Test: Cambiar la velocidad de un coche cuando hay duplicados.
- */
     @Test
-    public void testCambiarVelocidadConCochesDuplicados() {
-        // Crear dos coches con la misma matrícula
-        model.parking.add(new Coche("Toyota", "XYZ789"));
-        model.parking.add(new Coche("Nissan", "XYZ789"));
+    public void testBuscarCochePorMatriculaValida() {
+        Model.crearCoche("LaFerrari", "SBC1234");
 
-        // Cambiar la velocidad del coche con matrícula "XYZ789"
-        int nuevaVelocidad = model.cambiarVelocidad("XYZ789", 50);
+        Coche coche = Model.getCoche("SBC1234");
 
-        // Verificar que solo se modificó el primer coche encontrado
-        Coche primerCoche = model.parking.get(0);
-        Coche segundoCoche = model.parking.get(1);
-
-        assertEquals(50, primerCoche.velocidad); // La velocidad del primer coche debe ser 50
-        assertEquals(0, segundoCoche.velocidad); // La velocidad del segundo coche debe permanecer en 0
+        assertNotNull(coche);
+        assertEquals("LaFerrari", coche.modelo);
+        assertEquals("SBC1234", coche.matricula);
     }
-    /**
-     * Test 8: Obtener la velocidad de un coche inexistente.
-     */
 
     @Test
-    public void testObtenerVelocidadConCochesDuplicados() {
-        // Crear dos coches con la misma matrícula
-        model.parking.add(new Coche("Toyota", "XYZ789"));
-        model.parking.add(new Coche("Nissan", "XYZ789"));
+    public void testBuscarCochePorMatriculaInvalida() {
+        Coche coche = Model.getCoche("INVALIDA");
+        assertNull(coche);
+    }
 
-        // Cambiar la velocidad del primer coche
-        model.parking.get(0).velocidad = 30;
+    @Test
+    public void testCambiarVelocidadCocheExistente() {
+        Model.crearCoche("LaFerrari", "SBC1234");
+        int nuevaVelocidad = Model.cambiarVelocidad("SBC1234", 60);
 
-        // Obtener la velocidad del coche con matrícula "XYZ789"
-        int velocidad = model.getVelocidad("XYZ789");
+        assertEquals(60, nuevaVelocidad);
+        assertEquals(60, Model.getVelocidad("SBC1234"));
+    }
 
-        // Verificar que se obtuvo la velocidad del primer coche encontrado
-        assertEquals(30, velocidad); // La velocidad debe ser 30 (del primer coche)
+    @Test
+    public void testCambiarVelocidadCocheInexistente() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Model.cambiarVelocidad("INVALIDA", 50);
+        });
+    }
+
+    @Test
+    public void testAumentarVelocidad() {
+        Model.crearCoche("LaFerrari", "SBC1234");
+        int nuevaVelocidad = Model.aumentarVelocidad("SBC1234", 20);
+
+        assertEquals(20, nuevaVelocidad);
+        assertEquals(20, Model.getVelocidad("SBC1234"));
+    }
+
+    @Test
+    public void testAumentarVelocidadCocheInexistente() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Model.aumentarVelocidad("a", 20);
+        });
+    }
+
+    @Test
+    public void testDisminuirVelocidad() {
+        Model.crearCoche("LaFerrari", "SBC1234");
+        Model.disminuirVelocidad("SBC1234", 10);
+
+        assertEquals(-10, Model.getVelocidad("SBC1234")); // Puede llegar a negativo según diseño
+    }
+
+    @Test
+    public void testDisminuirVelocidadCocheInexistente() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Model.disminuirVelocidad("INVALIDA", 10);
+        });
+    }
+
+    @Test
+    public void testGetVelocidadCocheInexistente() {
+        int velocidad = Model.getVelocidad("INVALIDA");
+        assertEquals(-1, velocidad); // O puedes cambiar por excepción si prefieres
     }
 }

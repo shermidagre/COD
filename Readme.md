@@ -33,39 +33,32 @@ classDiagram
 
 ## Diagrama de Secuencia
 
-Ejemplo básico del procedimiento, sin utilizar los nombres de los métodos
-
 
 ```mermaid
 sequenceDiagram
-    participant Model
-    participant Controller
-    participant View
-    Controller->>Model: Puedes crear un coche?
-    activate Model
-    Model-->>Controller: Creado!
-    deactivate Model
-    Controller->>+View: Muestra la velocidad, porfa
+participant View
+participant Controller
+participant Model
+
+    View->>Controller: selecciona opción 3
+    Controller->>View: Modelo()
     activate View
-    View->>-View: Mostrando velocidad
-    View-->>Controller: Listo!
+    View-->>Controller: retorna modelo
     deactivate View
-```
-
-El mismo diagrama con los nombres de los métodos
-
-```mermaid
-sequenceDiagram
-    participant Model
-    participant Controller
-    participant View
-    Controller->>Model: crearCoche("Mercedes", "BXK 1234")
-    activate Model
-    Model-->>Controller: Coche
-    deactivate Model
-    Controller->>+View: muestraVelocidad("BXK 1234", velocidad)
+    
+    Controller->>View: Matricula()
     activate View
-    View->>-View: System.out.println()
-    View-->>Controller: boolean
+    View-->>Controller: retorna matricula
+    deactivate View
+    
+    Controller->>Model: crearCoche(modelo, matricula)
+    activate Model
+    Model->>Model: parking.add(coche)
+    Model-->>Controller: retorna coche
+    deactivate Model
+    
+    Controller->>View: return matricula
+    activate View
+    View->>View: muestra mensaje y vuelve al menú
     deactivate View
 ```

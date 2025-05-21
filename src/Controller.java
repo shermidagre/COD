@@ -1,50 +1,72 @@
-import java.lang.module.ModuleDescriptor;
+import java.util.ArrayList;
 
 public class Controller {
-    public static void main(String[] args) {
-        // Instanciamos la vista y el modelo
-        View miView = new View();
-        Model miModel = new Model();
 
-        // Crear tres coches
-        miModel.crearCoche("LaFerrari", "SBC 1234");
-        miModel.crearCoche("Alpine", "HYU 4567");
-        miModel.crearCoche("Aston Martin", "FGH 3333");
 
-        Coche ferrari = miModel.getCoche("SBC 1234");
 
-        // modifica la velocidad
+    public static String crearCoche(){
 
-        int nuevaVelocidad = miModel.cambiarVelocidad("SBC 1234", 30);
+            String modelo = View.Modelo();
+            String matricula = View.Matricula();
+            Coche nuevo = Model.crearCoche(modelo, matricula);
+            return nuevo.matricula;
+    }
 
-        // recoje la velocidad y la muestra (tarea de la View)
-        boolean hecho = miView.muestraVelocidad("SBC 1234", miModel.getVelocidad("SBC 1234"));
-
-        if (hecho) {
-            System.out.println("Correcto");
+    public static void aumentarVelocidad() {
+        String matricula = View.Matricula();
+        int cantidad = View.Velocidad();
+        boolean comprobacion = Model.aumentarVelocidad(matricula, cantidad);
+        if (comprobacion) {
+            Integer v = Model.getVelocidad(matricula);
+            View.mostrarVelocidad(matricula, v);
         } else {
-            System.out.println("Error");
-        } ;
+            View.mostrarError("Coche no encontrado.");
+        }
     }
 
-    if(seleccion = 0){
-            
-    // modifica velocidad en caso de que se baje
+    public static void disminuirVelocidad() {
+        String matricula = View.Matricula();
+        int cantidad = View.Velocidad();
+        boolean comprobacion = Model.disminuirVelocidad(matricula, cantidad);
+        if (comprobacion) {
+            Integer v = Model.getVelocidad(matricula);
+            View.mostrarVelocidad(matricula, v);
+        } else {
+            View.mostrarError("Coche no encontrado.");
+        }
+    }
 
-    int velocidadreducida = miModel.disminuirVelocidad("SBC 1234", 30)
+        public static void cambiarVelocidad() {
+                String matricula = View.Matricula();
+                int nuevaVelocidad = View.Velocidad();
+                boolean comprobacion = Model.cambiarVelocidad(matricula, nuevaVelocidad);
+                if (comprobacion) {
+                    Integer v = Model.getVelocidad(matricula);
+                    View.mostrarVelocidad(matricula, v);
+                } else {
+                    View.mostrarError("Coche no encontrado.");
+                }
+            }
 
-    }else (seleccion = 1){
-            
-    // modifica velocidad en caso de que se suba
-
-    int velocidadreducida = miModel.aumentarVelocidad("SBC 1234", 30)
+    public static void mostrarCoches() {
+        View.mostrarListaCoches(Model.parking);
 
     }
-    
 
+    public  static void mostrarCocheIndividual(){
 
-    
+        String matricula = View.Matricula();
+        Coche c = Model.getCochePorMatricula(matricula);
+        if (c != null){
+            View.mostrarCocheIndividual(c);
+        }
+        else {
+            View.mostrarError("Coche no encontrado.");
+        }
 
-
-
+    }
 }
+
+
+
+
