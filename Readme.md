@@ -56,23 +56,18 @@ participant Model
     Model->>Model: parking.add(coche)
     Model-->>Controller: Coche creado !!
     deactivate Model
-    activate Controller
+    
     Controller->>View: Devuelve la matricula
-    deactivate Controller
     activate View
     View->>View: muestra mensaje y vuelve al menú
     deactivate View
     
     View->>Controller: Selecciona opcion 4
-    activate Controller
     Controller->>Model: Model.parking
-    deactivate Controller
     activate Model
     Model-->>Controller: Devuelve la lista de coches
     deactivate Model
-    activate Controller
     Controller-->View: View.mostrarListaCoches(lista)
-    deactivate Controller
     activate View
     alt Si la lista esta vacia
     View->>View: Manda mensaje de que no hay coches
