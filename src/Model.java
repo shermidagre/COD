@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.logging.ConsoleHandler;
 
 /**
  * Clase encargada de manejar los datos
@@ -79,6 +80,15 @@ public class Model {
         return false;
     }
 
+    public static boolean repostar(String matricula,int ngasolina ){
+        Coche c = getCoche(matricula);
+        if (c != null){
+            c.gasolina += ngasolina;
+            return  true;
+        }
+        return false;
+    }
+
     public static boolean disminuirVelocidad(String matricula, int cantidad) {
         return aumentarVelocidad(matricula, -cantidad); // Reusamos lógica
     }
@@ -98,7 +108,6 @@ public class Model {
     }
 
     public static Integer getGasolina(String matricula){
-
         Coche c = getCoche(matricula);
         return c != null ? c.gasolina : null;
     }

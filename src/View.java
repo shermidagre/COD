@@ -58,6 +58,10 @@ public class View {
         return sc.nextInt();
     }
 
+    public static Integer gasolinaRepostar(){
+        System.out.println("Introduce la gasolina a repostar");
+        return sc.nextInt();
+    }
     public static String Modelo() {
         System.out.print("Introduce el modelo: ");
         return sc.next();
@@ -86,7 +90,9 @@ public class View {
         System.out.println("Matrícula: " + c.matricula);
         System.out.println("Modelo: " + c.modelo);
         System.out.println("Velocidad: " + c.velocidad + " km/h");
-        System.out.println("Metros"+c.metros + "m");
+        System.out.println("Metros: "+c.metros + " m ");
+        System.out.println("Gasolina; "+c.gasolina+" l ");
+
     }
 
     public static void mostrarGasolina(Coche c){
