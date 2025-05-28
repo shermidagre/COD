@@ -95,8 +95,8 @@ public class View {
 
     }
 
-    public static void mostrarGasolina(Coche c){
-        System.out.println("La gasolina de el coche con matricula: "+c.matricula+"y su gasolina es"+c.gasolina);
+    public static void mostrarGasolina(String matricula,int gasolina){
+        System.out.println("La gasolina de el coche con matricula: "+matricula+" , y su gasolina es: "+gasolina);
     }
 
     public static void mostrarDistancia(String matricula, int metros){

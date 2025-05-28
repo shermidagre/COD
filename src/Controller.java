@@ -81,10 +81,10 @@ public class Controller {
     public static void repostar(){
         String matricula = View.Matricula();
         int ngasolina = View.gasolinaRepostar();
-        boolean comprobacion = Model.avanzar(matricula, ngasolina);
+        boolean comprobacion = Model.repostar(matricula, ngasolina);
         if (comprobacion) {
-            Integer g = Model.getMetros(matricula);
-            View.mostrarDistancia(matricula, g);
+            Integer g = Model.getGasolina(matricula);
+            View.mostrarGasolina(matricula, g);
         } else {
             View.mostrarError("Coche no encontrado.");
         }
