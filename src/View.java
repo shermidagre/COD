@@ -35,7 +35,7 @@ public class View {
                 case 4 -> Controller.mostrarCoches(); // mostramos el metodo de la view , meto un get para el get parking y lo meto en la funcion de mostrarListaCoches
                 case 5 -> Controller.mostrarCocheIndividual();
                 case 6 -> Controller.avanzar();
-                //case 7 -> Controller.repostar();
+                case 7 -> Controller.repostar();
 
                 case 8 -> {
                     mostrarMensaje("Saliendo...");
