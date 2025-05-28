@@ -33,6 +33,14 @@ public class Model {
         }
         return null;
     }
+    public static Coche getGasolina(Integer gasolina) {
+        for (Coche c : parking) {
+            if (c.gasolina.equals(gasolina)) {
+                return c;
+            }
+        }
+        return null;
+    }
 
 
     /**
@@ -76,4 +84,12 @@ public class Model {
         return getCoche(matricula);
     }
 
+    public static Integer getGasolina(String matricula){
+
+        Coche c = getCoche(matricula);
+        return c != null ? c.gasolina : null;
+    }
 }
+
+
+

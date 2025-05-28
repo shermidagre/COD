@@ -65,6 +65,10 @@ public class Controller {
         }
 
     }
+    public static void avanzar(){
+        String matricula = View.Matricula();
+        Integer gasolina = Model.gasolina;
+    }
 }
 
 

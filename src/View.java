@@ -32,7 +32,10 @@ public class View {
                 case 3 -> Controller.crearCoche();
                 case 4 -> Controller.mostrarCoches(); // mostramos el metodo de la view , meto un get para el get parking y lo meto en la funcion de mostrarListaCoches
                 case 5 -> Controller.mostrarCocheIndividual();
-                case 6 -> {
+                case 6 -> Controller.avanzar();
+                case 7 -> Controller.repostar();
+
+                case 8 -> {
                     mostrarMensaje("Saliendo...");
                     System.exit(0);
                 }
@@ -40,7 +43,7 @@ public class View {
             }
 
             menu(); // Volver al menú después de cada acción
-        }while (opcion != 6);
+        }while (opcion != 8);
     }
 
     public static String Matricula() {
