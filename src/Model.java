@@ -71,19 +71,25 @@ public class Model {
         }
         return false;
     }
-    public static boolean avanzar(String matricula,int nuevos_metros){
+    public static boolean avanzar(String matricula,int nuevos_metros, int gasolina){
         Coche c = getCoche(matricula);
         if (c != null){
             c.metros += nuevos_metros;
+            c.gasolina = gasolina;
             return true;
         }
         return false;
     }
 
-    public static boolean repostar(String matricula,int ngasolina ){
+    public static boolean repostar(String matricula,int ngasolina,int metros
+    ){
         Coche c = getCoche(matricula);
         if (c != null){
             c.gasolina += ngasolina;
+            c.metros = metros;
+            if (metros>10){
+                ngasolina = ngasolina-1;
+            }
             return  true;
         }
         return false;
@@ -107,7 +113,7 @@ public class Model {
         return getCoche(matricula);
     }
 
-    public static Integer getGasolina(String matricula){
+    public static Integer getGasolina(String matricula, int metros){
         Coche c = getCoche(matricula);
         return c != null ? c.gasolina : null;
     }

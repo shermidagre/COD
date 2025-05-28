@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner ;
 /**
@@ -37,7 +36,7 @@ public class View {
                 case 6 -> Controller.avanzar();
                 case 7 -> Controller.repostar();
 
-                case 8 -> {
+                case 9 -> {
                     mostrarMensaje("Saliendo...");
                     System.exit(0);
                 }
@@ -45,7 +44,7 @@ public class View {
             }
 
             menu(); // Volver al menú después de cada acción
-        }while (opcion != 8);
+        }while (opcion != 9);
     }
 
     public static String Matricula() {
@@ -97,6 +96,10 @@ public class View {
 
     public static void mostrarGasolina(String matricula,int gasolina){
         System.out.println("La gasolina de el coche con matricula: "+matricula+" , y su gasolina es: "+gasolina);
+    }
+
+    public static void Gasolina(Coche c){
+        System.out.println("La gasolina actual es de: "+c.gasolina);
     }
 
     public static void mostrarDistancia(String matricula, int metros){
