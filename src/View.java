@@ -20,7 +20,9 @@ public class View {
             System.out.println("3 - Crear coche");
             System.out.println("4 - mostrar coches");
             System.out.println("5 - mostrar coche individual");
-            System.out.println("6 - Salir");
+            System.out.println("6 - sumar metros recorridos");
+            System.out.println("7 - Repostar");
+            System.out.println("8 - Salir");
 
 
             opcion = sc.nextInt();
@@ -33,7 +35,7 @@ public class View {
                 case 4 -> Controller.mostrarCoches(); // mostramos el metodo de la view , meto un get para el get parking y lo meto en la funcion de mostrarListaCoches
                 case 5 -> Controller.mostrarCocheIndividual();
                 case 6 -> Controller.avanzar();
-                case 7 -> Controller.repostar();
+                //case 7 -> Controller.repostar();
 
                 case 8 -> {
                     mostrarMensaje("Saliendo...");
@@ -49,6 +51,11 @@ public class View {
     public static String Matricula() {
         System.out.print("Introduce la matrícula: ");
         return sc.next();
+    }
+
+    public static Integer MetrosRecorridos(){
+        System.out.println("Introduce los metros recorridos");
+        return sc.nextInt();
     }
 
     public static String Modelo() {
@@ -79,6 +86,16 @@ public class View {
         System.out.println("Matrícula: " + c.matricula);
         System.out.println("Modelo: " + c.modelo);
         System.out.println("Velocidad: " + c.velocidad + " km/h");
+        System.out.println("Metros"+c.metros + "m");
+    }
+
+    public static void mostrarGasolina(Coche c){
+        System.out.println("La gasolina de el coche con matricula: "+c.matricula+"y su gasolina es"+c.gasolina);
+    }
+
+    public static void mostrarDistancia(String matricula, int metros){
+        System.out.println("Matrícula: " + matricula);
+        System.out.println("Metros: " + metros);
     }
     public static void mostrarListaCoches(ArrayList<Coche> lista) {
         if (lista.isEmpty()) {

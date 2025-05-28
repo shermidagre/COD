@@ -70,6 +70,14 @@ public class Model {
         }
         return false;
     }
+    public static boolean avanzar(String matricula,int nuevos_metros){
+        Coche c = getCoche(matricula);
+        if (c != null){
+            c.metros += nuevos_metros;
+            return true;
+        }
+        return false;
+    }
 
     public static boolean disminuirVelocidad(String matricula, int cantidad) {
         return aumentarVelocidad(matricula, -cantidad); // Reusamos lógica
@@ -78,6 +86,11 @@ public class Model {
     public static Integer getVelocidad(String matricula) {
         Coche c = getCoche(matricula);
         return c != null ? c.velocidad : null;
+    }
+
+    public static Integer getMetros(String matricula){
+        Coche c = getCoche(matricula);
+        return c!= null ? c.metros : null;
     }
 
     public static Coche getCochePorMatricula(String matricula) {
