@@ -1,3 +1,17 @@
+
+# Pensamiento previo a realizar el examen
+
+### La verdad simplemente he pensado en implementar el avanzar igual al que subir de velocidad ya que es lo mismo porque estas añadiendo por lo cual, este sigue la misma estructura
+### Segundo, al fin y al cabo la gasolina va de la misma manera ya que la estas subiendo al repostar 
+
+## Para la funcion de avanzar sigue todo igual, simplemente utilizo el view.matricula y el view.metrosRecorridos
+## La funcion repostar solo pide la matricula y la gasolina a repostar y , a este metodo tambien le añadi el coger la gasolina dle model para asi poder realizar lo de bajar la gasolina en funcion a los metros recorridos
+
+## Añadi todo al menu con sus opciones , al fin y al cabo fue todo seguir la misma estructura que tenian los otros metodos
+
+# Comprobado todo, :D
+
+
 # Arquitectura MVC
 
 Aplicación que trabaja con objetos coches, modifica la velocidad y la muestra

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.logging.ConsoleHandler;
 
 /**
  * Clase encargada de manejar los datos
@@ -71,11 +70,10 @@ public class Model {
         }
         return false;
     }
-    public static boolean avanzar(String matricula,int nuevos_metros, int gasolina){
+    public static boolean avanzar(String matricula,int nuevos_metros){
         Coche c = getCoche(matricula);
         if (c != null){
             c.metros += nuevos_metros;
-            c.gasolina = gasolina;
             return true;
         }
         return false;
@@ -113,7 +111,7 @@ public class Model {
         return getCoche(matricula);
     }
 
-    public static Integer getGasolina(String matricula, int metros){
+    public static Integer getGasolina(String matricula){
         Coche c = getCoche(matricula);
         return c != null ? c.gasolina : null;
     }

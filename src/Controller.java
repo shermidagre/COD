@@ -81,7 +81,7 @@ public class Controller {
     public static void repostar(){
         String matricula = View.Matricula();
         int ngasolina = View.gasolinaRepostar();
-        boolean comprobacion = Model.repostar(matricula, ngasolina);
+        boolean comprobacion = Model.repostar(matricula, ngasolina,Model.getMetros(matricula));
         if (comprobacion) {
             Integer g = Model.getGasolina(matricula);
             View.mostrarGasolina(matricula, g);
