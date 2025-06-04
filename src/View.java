@@ -139,7 +139,7 @@ public class View {
         return true;
     }
 
-    public static void alarmaGasolinaBaja() {
+    public static void alarmaGasolinaBaja(String matricula,int gasolina) {
         System.out.println("Repostar");
     }
 
