@@ -126,7 +126,7 @@ public class View {
     }
 
     public static void mostrarAvance(Coche c, int metrosRecorridos) {
-        System.out.println("✅ Avance realizado:");
+        System.out.println("Avance realizado:");
         System.out.println("Matrícula: " + c.matricula);
         System.out.println("Metros recorridos: " + metrosRecorridos);
         System.out.println("Gasolina restante: " + c.gasolina + " litros");
@@ -144,6 +144,8 @@ public class View {
         System.out.println("El coche con matricula "+matricula+"necesita repostar porque tiene"+ gasolina+ "l");
     }
 
+
+    //Creacion de el metodo para el mensaje de repostar
     public static void Repostar(){
         System.out.println("(Metodo nuevo de repostar)Repostar");
     }

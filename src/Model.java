@@ -56,7 +56,7 @@ public class Model {
     public static void notifyObservers(Coche coche) {
         ObserverRepostarGasolina.update(coche);
         ObserverLimite.update(coche);
-        ObserverRepostar.update(coche);
+        ObserverRepostar.update(coche); //añadimos a el notify observers para posteriormente llamarlo en repostar
     }
     public static boolean cambiarVelocidad(String matricula, int nuevaVelocidad) {
         Coche c = getCoche(matricula);
@@ -101,7 +101,7 @@ public class Model {
         Coche c = getCoche(matricula);
         if (c != null){
             c.gasolina += ngasolina;
-            notifyObservers(getCoche(matricula));
+            notifyObservers(getCoche(matricula)); //Como por ejemplo se llama aqui
             return  true;
         }
         return false;
