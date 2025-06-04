@@ -17,6 +17,46 @@
 Aplicación que trabaja con objetos coches, modifica la velocidad y la muestra
 
 ---
+## Diagrama de Secuencia con Observer EXAMEN
+
+```mermaid
+sequenceDiagram
+    title Notificación con Observer al Cambiar Velocidad y Gasolina
+
+    participant View
+    participant Controller
+    participant Model
+    participant ObserverRepostar
+
+
+    View-->>Controller: Selecciona opción "Repostar"
+    Controller->>View: Matricula()
+    activate View
+    View-->>Controller: Devuelve matrícula
+    deactivate View
+
+    Controller->>View: gasolinaRepostar()
+    activate View
+    View-->>Controller: Devuelve cantidad de gasolina
+    deactivate View
+
+    Controller->>Model: repostar(matricula, ngasolina)
+    activate Model
+        Model->>Model: getCoche(matricula)
+        Model->>Model: c.gasolina += ngasolina
+        Model->>Model: notifyObservers(c)
+            Model->>ObserverRepostar: update(c)
+                ObserverRepostarGasolina->>View: Repostar()
+    Model-->>Controller: true
+    deactivate Model
+
+    Controller->>View: mostrarGasolina(matricula, gasolina)
+    activate View
+    View->>View: Muestra nivel de gasolina
+    deactivate View
+```
+
+
 ## Diagrama de clases:
 
 ```mermaid
