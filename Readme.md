@@ -65,7 +65,7 @@ sequenceDiagram
     deactivate View
 ```
 
-
+![Pruebaqueva.png](Pruebaqueva.png)
 
 ## Diagrama de clases:
 
