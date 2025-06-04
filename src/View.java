@@ -139,8 +139,8 @@ public class View {
         return true;
     }
 
-    public static void alarmaGasolinaBaja(String matricula, int gasolina) {
-        System.out.println("⛽ Gasolina baja: " + matricula + " tiene solo " + gasolina + " litros.");
+    public static void alarmaGasolinaBaja() {
+        System.out.println("Repostar");
     }
 
 }
