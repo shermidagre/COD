@@ -56,6 +56,7 @@ public class Model {
     public static void notifyObservers(Coche coche) {
         ObserverRepostarGasolina.update(coche);
         ObserverLimite.update(coche);
+        ObserverRepostar.update(coche);
     }
     public static boolean cambiarVelocidad(String matricula, int nuevaVelocidad) {
         Coche c = getCoche(matricula);
