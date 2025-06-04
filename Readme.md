@@ -46,7 +46,7 @@ sequenceDiagram
         Model->>Model: c.gasolina += ngasolina
         Model->>Model: notifyObservers(c)
             Model->>ObserverRepostar: update(c)
-                ObserverRepostarGasolina->>View: Repostar()
+                ObserverRepostar->>View: Repostar()
     Model-->>Controller: true
     deactivate Model
 
