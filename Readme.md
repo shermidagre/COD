@@ -118,3 +118,5 @@ participant Model
     
     
 ```
+
+## Diagrama de Secuencia con Observer

@@ -50,15 +50,21 @@ public class Model {
     /**
      * Cambia la velocidad de un coche
 
-     * @param matricula
 
      */
+
+    public static void notifyObservers(Coche coche) {
+        ObserverRepostarGasolina.update(coche);
+        ObserverLimite.update(coche);
+    }
     public static boolean cambiarVelocidad(String matricula, int nuevaVelocidad) {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad = nuevaVelocidad;
+            notifyObservers(getCoche(matricula));
             return true;
         }
+
         return false;
     }
 
@@ -66,6 +72,7 @@ public class Model {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad += cantidad;
+            notifyObservers(getCoche(matricula));
             return true;
         }
         return false;
@@ -74,20 +81,18 @@ public class Model {
         Coche c = getCoche(matricula);
         if (c != null){
             c.metros += nuevos_metros;
+            notifyObservers(getCoche(matricula));
             return true;
         }
         return false;
     }
 
-    public static boolean repostar(String matricula,int ngasolina,int metros
+    public static boolean repostar(String matricula,int ngasolina
     ){
         Coche c = getCoche(matricula);
         if (c != null){
             c.gasolina += ngasolina;
-            c.metros = metros;
-            if (metros>10){
-                ngasolina = ngasolina-1;
-            }
+            notifyObservers(getCoche(matricula));
             return  true;
         }
         return false;

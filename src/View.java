@@ -35,6 +35,17 @@ public class View {
                 case 5 -> Controller.mostrarCocheIndividual();
                 case 6 -> Controller.avanzar();
                 case 7 -> Controller.repostar();
+                case 8 -> {
+                    String matricula = Matricula();
+                    Coche c = Model.getCoche(matricula);
+                    if (c != null){
+                        mostrarGasolina(matricula,gasolinaRepostar());
+                    }
+                    else {
+                        System.out.println("Coche no encontrado");
+                    }
+                }
+
 
                 case 9 -> {
                     mostrarMensaje("Saliendo...");
@@ -94,12 +105,9 @@ public class View {
 
     }
 
-    public static void mostrarGasolina(String matricula,int gasolina){
-        System.out.println("La gasolina de el coche con matricula: "+matricula+" , y su gasolina es: "+gasolina);
-    }
 
-    public static void Gasolina(Coche c){
-        System.out.println("La gasolina actual es de: "+c.gasolina);
+    public static void mostrarGasolina(String matricula,int gasolina){
+        System.out.println("La gasolina actual es de: "+gasolina);
     }
 
     public static void mostrarDistancia(String matricula, int metros){
@@ -114,6 +122,18 @@ public class View {
             mostrarCocheIndividual(c);
             }
         }
+    }
+
+
+    // Metodos de los observers
+
+    public static boolean alarmaInfraccionVelocidad(String matricula,Integer nuevaVelocidad){
+        System.out.println("⚠️ ¡ALERTA! Velocidad excedida: " + matricula + " va a " + nuevaVelocidad + " km/h (>120)");
+        return true;
+    }
+
+    public static void alarmaGasolinaBaja(String matricula, int gasolina) {
+        System.out.println("⛽ Gasolina baja: " + matricula + " tiene solo " + gasolina + " litros.");
     }
 
 }
