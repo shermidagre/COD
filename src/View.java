@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner ;
 /**
@@ -140,6 +141,10 @@ public class View {
     }
 
     public static void alarmaGasolinaBaja(String matricula,int gasolina) {
+        System.out.println("El coche con matricula "+matricula+"necesita repostar porque tiene"+gasolina);
+    }
+
+    public static void Repostar(){
         System.out.println("Repostar");
     }
 

@@ -3,7 +3,7 @@ public class ObserverRepostar {
 
     public static void update(Coche c){
         if (c.gasolina < limitegasolina){
-            View.alarmaGasolinaBaja(c.matricula,c.gasolina);
+            View.Repostar();
         }
     }
 }
