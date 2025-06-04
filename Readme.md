@@ -66,6 +66,7 @@ sequenceDiagram
 ```
 
 
+
 ## Diagrama de clases:
 
 ```mermaid
