@@ -19,6 +19,15 @@ Aplicación que trabaja con objetos coches, modifica la velocidad y la muestra
 ---
 ## Diagrama de Secuencia con Observer EXAMEN
 
+# Pensamiento previo a realizar el examen (2 parte, observer)
+
+### He implementado la misma logica que tenia ya hecha de un observer parecido, so simplemente no hay mucho nad mas que añadir
+### Segundo, al fin y al cabo una comparacion en el observerRepostar de que cuando la gasolina es <10 pues manda un mensaje en la view, en este caso no le he pasado parametros de matricula ni gasolina ya que no son pedidos
+
+## Luego cree el marmaid con la logica que tenia ya echa, pero sin poner los otros observers que tenia
+
+# Comprobado todo, y finiquitau, gracias por el gift damian :D
+
 ```mermaid
 sequenceDiagram
     title Notificación con Observer al Cambiar Velocidad y Gasolina
