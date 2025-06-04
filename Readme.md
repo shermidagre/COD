@@ -120,3 +120,72 @@ participant Model
 ```
 
 ## Diagrama de Secuencia con Observer
+
+```mermaid
+sequenceDiagram
+title Notificación con Observer al Cambiar Velocidad y Gasolina
+
+    participant View
+    participant Controller
+    participant Model
+    participant ObserverLimite
+    participant ObserverRepostarGasolina
+
+    View->>Controller: Selecciona opción "Aumentar Velocidad"
+    Controller->>View: Matricula()
+    activate View
+    View-->>Controller: Devuelve matrícula
+    deactivate View
+
+    Controller->>View: Velocidad()
+    activate View
+    View-->>Controller: Devuelve cantidad a aumentar
+    deactivate View
+
+    Controller->>Model: aumentarVelocidad(matricula, cantidad)
+    activate Model
+        Model->>Model: getCoche(matricula)
+        Model->>Model: c.velocidad += cantidad
+        Model->>Model: notifyObservers(c)
+            Model->>ObserverLimite: update(c)
+                ObserverLimite->>View: alarmaInfraccionVelocidad()
+            Model->>ObserverRepostarGasolina: update(c)
+                ObserverRepostarGasolina->>View: alarmaGasolinaBaja()
+    Model-->>Controller: true
+    deactivate Model
+
+    Controller->>View: mostrarVelocidad(matricula, velocidad)
+    activate View
+    View->>View: Muestra nueva velocidad
+    deactivate View
+
+
+    View->>Controller: Selecciona opción "Repostar"
+    Controller->>View: Matricula()
+    activate View
+    View-->>Controller: Devuelve matrícula
+    deactivate View
+
+    Controller->>View: gasolinaRepostar()
+    activate View
+    View-->>Controller: Devuelve cantidad de gasolina
+    deactivate View
+
+    Controller->>Model: repostar(matricula, ngasolina)
+    activate Model
+        Model->>Model: getCoche(matricula)
+        Model->>Model: c.gasolina += ngasolina
+        Model->>Model: notifyObservers(c)
+            Model->>ObserverRepostarGasolina: update(c)
+                ObserverRepostarGasolina->>View: alarmaGasolinaBaja()
+            Model->>ObserverLimite: update(c)
+                ObserverLimite->>View: alarmaInfraccionVelocidad()
+    Model-->>Controller: true
+    deactivate Model
+
+    Controller->>View: mostrarGasolina(matricula, gasolina)
+    activate View
+    View->>View: Muestra nivel de gasolina
+    deactivate View
+
+```

@@ -1,5 +1,5 @@
 public class ObserverRepostarGasolina {
-    final static int limitegasolina = 5;
+    final static int limitegasolina = 10;
 
     public static void update(Coche c){
         if (c.gasolina < limitegasolina){

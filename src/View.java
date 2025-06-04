@@ -124,6 +124,13 @@ public class View {
         }
     }
 
+    public static void mostrarAvance(Coche c, int metrosRecorridos) {
+        System.out.println("✅ Avance realizado:");
+        System.out.println("Matrícula: " + c.matricula);
+        System.out.println("Metros recorridos: " + metrosRecorridos);
+        System.out.println("Gasolina restante: " + c.gasolina + " litros");
+    }
+
 
     // Metodos de los observers
 

@@ -80,9 +80,17 @@ public class Model {
     public static boolean avanzar(String matricula,int nuevos_metros){
         Coche c = getCoche(matricula);
         if (c != null){
-            c.metros += nuevos_metros;
-            notifyObservers(getCoche(matricula));
-            return true;
+            double litrosNecesarios = nuevos_metros / 100.0;
+
+            if (c.gasolina >= litrosNecesarios) {
+                c.metros += nuevos_metros;
+                c.gasolina -= (int) litrosNecesarios;
+                notifyObservers(c); // Notificamos cambios
+                return true;
+            } else {
+                View.mostrarError("Gasolina insuficiente para recorrer " + nuevos_metros + " metros.");
+                return false;
+            }
         }
         return false;
     }

@@ -73,7 +73,8 @@ public class Controller {
         boolean comprobacion = Model.avanzar(matricula, nuevos_metros);
         if (comprobacion) {
             Integer m = Model.getMetros(matricula);
-            View.mostrarDistancia(matricula, m);
+            View.mostrarAvance(Model.getCoche(matricula), m);
+
         } else {
             View.mostrarError("Coche no encontrado.");
         }
