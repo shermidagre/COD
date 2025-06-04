@@ -65,6 +65,8 @@ sequenceDiagram
     deactivate View
 ```
 
+## FURRULA :
+
 ![Pruebaqueva.png](Pruebaqueva.png)
 
 ## Diagrama de clases:
