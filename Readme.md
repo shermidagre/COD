@@ -69,6 +69,8 @@ sequenceDiagram
 
 ![Pruebaqueva.png](Pruebaqueva.png)
 
+
+
 ## Diagrama de clases:
 
 ```mermaid
