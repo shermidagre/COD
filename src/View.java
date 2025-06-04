@@ -141,11 +141,11 @@ public class View {
     }
 
     public static void alarmaGasolinaBaja(String matricula,int gasolina) {
-        System.out.println("El coche con matricula "+matricula+"necesita repostar porque tiene"+gasolina);
+        System.out.println("El coche con matricula "+matricula+"necesita repostar porque tiene"+ gasolina+ "l");
     }
 
     public static void Repostar(){
-        System.out.println("Repostar");
+        System.out.println("(Metodo nuevo de repostar)Repostar");
     }
 
 }
