@@ -1,3 +1,5 @@
+import org.junit.jupiter.params.provider.EnumSource;
+
 import java.util.ArrayList;
 
 public class Controller {
@@ -65,6 +67,32 @@ public class Controller {
         }
 
     }
+    public static void avanzar(){
+        String matricula = View.Matricula();
+        int nuevos_metros = View.MetrosRecorridos();
+        boolean comprobacion = Model.avanzar(matricula, nuevos_metros);
+        if (comprobacion) {
+            Integer m = Model.getMetros(matricula);
+            View.mostrarDistancia(matricula, m);
+        } else {
+            View.mostrarError("Coche no encontrado.");
+        }
+    }
+
+    public static void repostar(){
+        String matricula = View.Matricula();
+        int ngasolina = View.gasolinaRepostar();
+        boolean comprobacion = Model.repostar(matricula, ngasolina);
+        if (comprobacion) {
+            Integer g = Model.getGasolina(matricula);
+            View.mostrarGasolina(matricula,g);
+        } else {
+            View.mostrarError("Coche no encontrado.");
+        }
+    }
+
+
+
 }
 
 

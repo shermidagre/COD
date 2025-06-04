@@ -33,6 +33,14 @@ public class Model {
         }
         return null;
     }
+    public static Coche getGasolina(Integer gasolina) {
+        for (Coche c : parking) {
+            if (c.gasolina.equals(gasolina)) {
+                return c;
+            }
+        }
+        return null;
+    }
 
 
     /**
@@ -42,15 +50,21 @@ public class Model {
     /**
      * Cambia la velocidad de un coche
 
-     * @param matricula
 
      */
+
+    public static void notifyObservers(Coche coche) {
+        ObserverRepostarGasolina.update(coche);
+        ObserverLimite.update(coche);
+    }
     public static boolean cambiarVelocidad(String matricula, int nuevaVelocidad) {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad = nuevaVelocidad;
+            notifyObservers(getCoche(matricula));
             return true;
         }
+
         return false;
     }
 
@@ -58,7 +72,28 @@ public class Model {
         Coche c = getCoche(matricula);
         if (c != null) {
             c.velocidad += cantidad;
+            notifyObservers(getCoche(matricula));
             return true;
+        }
+        return false;
+    }
+    public static boolean avanzar(String matricula,int nuevos_metros){
+        Coche c = getCoche(matricula);
+        if (c != null){
+            c.metros += nuevos_metros;
+            notifyObservers(getCoche(matricula));
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean repostar(String matricula,int ngasolina
+    ){
+        Coche c = getCoche(matricula);
+        if (c != null){
+            c.gasolina += ngasolina;
+            notifyObservers(getCoche(matricula));
+            return  true;
         }
         return false;
     }
@@ -72,8 +107,20 @@ public class Model {
         return c != null ? c.velocidad : null;
     }
 
+    public static Integer getMetros(String matricula){
+        Coche c = getCoche(matricula);
+        return c!= null ? c.metros : null;
+    }
+
     public static Coche getCochePorMatricula(String matricula) {
         return getCoche(matricula);
     }
 
+    public static Integer getGasolina(String matricula){
+        Coche c = getCoche(matricula);
+        return c != null ? c.gasolina : null;
+    }
 }
+
+
+
